@@ -1,0 +1,22 @@
+lzc-sdk-version: "0.1"
+name: Cinemore
+package: cloud.lazycat.app.cinemore
+version: 0.1.0
+description: 高性能跨平台视频播放器
+homepage: https://cinemore.com.cn/
+author: cinemore
+application:
+  subdomain: cinemore
+  background_task: true
+  multi_instance: true
+  routes:
+    - /=http://cinemore:8000/
+services:
+  cinemore:
+    image: registry.lazycat.cloud/czyt/cinemore/cinemore-server:4e42ef6e7a5fc030
+    binds:
+      - /lzcapp/var/data:/app/data
+      - /lzcapp/run/mnt/home/Movie:/media
+ext_config:
+  enable_document_access: true
+  enable_media_access: true
