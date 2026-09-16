@@ -7,15 +7,13 @@ application:
   upstreams:
     - location: /
       backend: http://cinemore:8000/
-
 services:
   cinemore:
-    # upstream: cinemore/cinemore-server:latest
-    image: cinemore/cinemore-server:latest
+    # upstream: cinemore/cinemore-server:latest@sha256:bc1bebacdce9d8253347c413778da938554dde167be38513c2d5d67f805d2ce1
+    image: registry.lazycat.cloud/czyt/cinemore/cinemore-server:4efd22fb9f3b0553
     binds:
       - /lzcapp/var/data:/app/data
       - /lzcapp/run/mnt/home/Movie:/media
-
 ext_config:
   enable_document_access: true
   enable_media_access: true
